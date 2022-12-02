@@ -34,4 +34,8 @@ public class Main {
             return c;     // 5. Вернуть это значение
         }
     }
+
+    static int findMin2(int a, int b, int c) {
+        return Math.min(Math.min(a, b), Math.min(b, c)) ;
+    }
 }
