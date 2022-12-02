@@ -36,13 +36,5 @@ public class Main {
         //System.out.println(b.multiply(new BigInteger("13513713713517393195135175")));
 
         // boolean < byte < short == char < int == float < long == double
-
-        //TODO
-        // 1. Создать глобальную переменную Scanner (так же как в дз)
-        // 2. Считать 3 значения из консоли в методе main
-        // 3. Передать эти 3 значения в метод findMin(int a, int b, int c)
-        // 4. Найти меньшее значение из 3
-        // 5. Вернуть это значение
-        // 6. В методе main вывести полученное значение в консоль
     }
 }
