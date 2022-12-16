@@ -2,6 +2,7 @@ package matrices;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
@@ -14,7 +15,7 @@ public class Main {
                 {0, 0, 0, 0, 0},
         };
 
-        int[][] arr = generateArray();
+        //int[][] arr = generateArray();
         /*for (int i = 0; i < arr.length; i++) {
             System.out.println(Arrays.toString(arr[i]));
         }*/
@@ -23,7 +24,15 @@ public class Main {
         int[] right = {0, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
 
-        int n = 9;
+        int n = 145;
+        outputCross(generateArray(n), generateArray(n), 1);
+        /*outputCross(left, right);
+        outputCross(left, right);*/
+    }
+
+    static void outputCross(int[] left, int[] right, int count) {
+        //int n = 9;
+        int n = left.length;
         for (int i = 0; i < n; i++) {
             int headSpaceCount;
             if ((n % 2 == 0 && i < n / 2) || (n % 2 == 1 && i <= n / 2)) {
@@ -59,43 +68,14 @@ public class Main {
                         + repeatSpaces(tailSpaceCount);
             }
 
-            System.out.println(s);
+            System.out.println(s.repeat(count));
+
             try {
-                Thread.sleep(50);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-
-        //TODO: Написать алгоритм расчета headSpaceCount, используя n и i
-        //  0
-        //  1
-        //  2
-        //  1
-        //  0
-        /*int n = 5;
-
-        for (int i = 0; i < n; i++) {
-            int headSpaceCount;
-
-            if (i <= n / 2) {
-                headSpaceCount = i;
-            } else {
-                headSpaceCount = n - i - 1;
-            }
-
-
-            System.out.println(headSpaceCount);
-        }*/
-
-
-
-
-        /*System.out.println("1");
-        System.out.println(" 2");
-        System.out.println("  3");
-        System.out.println("   4");
-        System.out.println("    5");*/
     }
 
     static String repeatSpaces(int count) {
@@ -106,17 +86,13 @@ public class Main {
         return s.toString();
     }
 
-    static int[][] generateArray() {
+    static int[] generateArray(int n) {
         Random r = new Random();
 
-        int n = 5;
-
-        int[][] arr = new int[n][n];
+        int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                arr[i][j] = r.nextInt(100);
-            }
+            arr[i] = r.nextInt(0, 10);
         }
 
         return arr;
