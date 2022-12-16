@@ -19,16 +19,17 @@ public class Main {
             System.out.println(Arrays.toString(arr[i]));
         }*/
 
-        int[] left = {1, 2, 3, 4, 5};
-        int[] right = {6, 7, 3, 8, 9};
+        int[] left = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+        int[] right = {0, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
 
-        int n = 5;
+        int n = 9;
         for (int i = 0; i < n; i++) {
             int headSpaceCount;
-
-            if (i <= n / 2) {
+            if ((n % 2 == 0 && i < n / 2) || (n % 2 == 1 && i <= n / 2)) {
                 headSpaceCount = i;
+            } else if (n % 2 == 0 && i == n / 2) {
+                headSpaceCount = i - 1;
             } else {
                 headSpaceCount = n - i - 1;
             }
@@ -36,20 +37,34 @@ public class Main {
             int tailSpaceCount = headSpaceCount;
             int middleSpaceCount = n - headSpaceCount * 2 - 2;
 
-            //TODO: используя код выше, написать логику расчета leftValue и rightValue
-            int leftValue = 0;
-            int rightValue = 0;
+            int leftValue;
+            if (i <= n / 2) {
+                leftValue = left[i];
+            } else {
+                leftValue = right[i];
+            }
+
+            int rightValue;
+            if (i <= n / 2) {
+                rightValue = right[i];
+            } else {
+                rightValue = left[i];
+            }
 
             String s;
-
-            if (i == n / 2) {
-                s = " ".repeat(headSpaceCount) + leftValue + " ".repeat(tailSpaceCount);
+            if (n % 2 == 1 && i == n / 2) {
+                s = repeatSpaces(headSpaceCount) + leftValue + repeatSpaces(tailSpaceCount);
             } else {
-                s = " ".repeat(headSpaceCount) + leftValue + " ".repeat(middleSpaceCount) + rightValue
-                        + " ".repeat(tailSpaceCount);
+                s = repeatSpaces(headSpaceCount) + leftValue + repeatSpaces(middleSpaceCount) + rightValue
+                        + repeatSpaces(tailSpaceCount);
             }
 
             System.out.println(s);
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         //TODO: Написать алгоритм расчета headSpaceCount, используя n и i
@@ -81,6 +96,14 @@ public class Main {
         System.out.println("  3");
         System.out.println("   4");
         System.out.println("    5");*/
+    }
+
+    static String repeatSpaces(int count) {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            s.append(" ");
+        }
+        return s.toString();
     }
 
     static int[][] generateArray() {
