@@ -37,6 +37,8 @@ public class Main {
 
     }
 
+    //Constructors
+
     //С чем используются модификаторы доступа
     //1. С методами: public static void main(String[] args)
     //2. С классами: public class Main
